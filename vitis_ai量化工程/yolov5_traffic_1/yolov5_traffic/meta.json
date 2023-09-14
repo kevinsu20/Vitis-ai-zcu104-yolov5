@@ -1,8 +1,0 @@
-{
-    "lib": "libvart-dpu-runner.so",
-    "filename": "model.xmodel",
-    "kernel": [
-        "subgraph_DetectMultiBackend__DetectMultiBackend_Model_model__C3_model__C3_13__Conv_cv1__Conv2d_conv__input_133"
-    ],
-    "target": "DPUCZDX8G_ISA1_B4096"
-}
