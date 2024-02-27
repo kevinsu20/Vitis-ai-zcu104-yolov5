@@ -1,12 +1,12 @@
-# Vitis-ai-zcu104-yolov5
+# Vitis ai zcu104 yolov5
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Use Vitis-AI to deploy yolov5 on ZCU104
+Use Vitis AI to deploy yolov5 on ZCU104
 
-## ÔËÐÐvai_q_pytorch
+## è¿è¡Œvai_q_pytorch
 
-### 1£©Prepare 3 files£º
+### 1ï¼‰Prepare 3 filesï¼š
 
 | name          | description                      |
 | ------------- | -------------------------------- |
@@ -15,11 +15,11 @@ Use Vitis-AI to deploy yolov5 on ZCU104
 | dataset       | 100 - 1000 images                |
 
 
-### 2£©modify model
-ÒªÊ¹ PyTorch Ä£ÐÍ¿ÉÁ¿»¯£¬ÐèÒªÐÞ¸ÄÄ£ÐÍ¶¨Òå£¬ÒÔÈ·±£ÐÞ¸ÄºóµÄÄ£ÐÍÂú×ãÒÔÏÂÌõ¼þ:
-- ÒªÁ¿»¯µÄÄ£ÐÍÓ¦½öº¬Ç°´«·½·¨¡£ËùÓÐÆäËüº¯Êý¶¼Ó¦ÒÆ³ö»òÕßÇ¨ÒÆÖÁÅÉÉúµÄÀà¡£ÕâÐ©º¯ÊýÍ¨³£×÷ÎªÔ¤´¦ÀíºÍºó´¦ÀíÀ´¹¤×÷¡£Èç¹û²»½«ÆäÒÆ³ö£¬ÄÇÃ´´Ë API »áÔÚÁ¿»¯Ä£¿éÖÐ½«ÆäÒÆ³ý£¬ÕâÑù»áÔÚÇ°´«Á¿»¯Ä£¿éÊ±µ¼ÖÂÒì³£ÐÐÎª¡£ 
-- ÕâÑù¸¡µãÄ£ÐÍÓ¦¿ÉÍ¨¹ý jit ×·×Ù²âÊÔ¡£½«¸¡µãÄ£¿éÉèÖÃÎªÆÀ¹À×´Ì¬£¬È»ºóÊ¹ÓÃ torch.jit.trace º¯ÊýÀ´²âÊÔ¸¡µãÄ£ÐÍ¡£
-ÎÒÃÇÊ¹ÓÃµÄyolov5Ä£ÐÍ£¬ÐèÒª½«ÌØÕ÷ÌáÈ¡ÖÐÇ°´«º¯ÊýµÈ¶àÓÚ²¿·ÖÈ¥µô£¬ÐÞ¸Äºó´úÂëÈçÏÂ£º
+### 2ï¼‰modify model
+è¦ä½¿ PyTorch æ¨¡åž‹å¯é‡åŒ–ï¼Œéœ€è¦ä¿®æ”¹æ¨¡åž‹å®šä¹‰ï¼Œä»¥ç¡®ä¿ä¿®æ”¹åŽçš„æ¨¡åž‹æ»¡è¶³ä»¥ä¸‹æ¡ä»¶:
+- è¦é‡åŒ–çš„æ¨¡åž‹åº”ä»…å«å‰ä¼ æ–¹æ³•ã€‚æ‰€æœ‰å…¶å®ƒå‡½æ•°éƒ½åº”ç§»å‡ºæˆ–è€…è¿ç§»è‡³æ´¾ç”Ÿçš„ç±»ã€‚è¿™äº›å‡½æ•°é€šå¸¸ä½œä¸ºé¢„å¤„ç†å’ŒåŽå¤„ç†æ¥å·¥ä½œã€‚å¦‚æžœä¸å°†å…¶ç§»å‡ºï¼Œé‚£ä¹ˆæ­¤ API ä¼šåœ¨é‡åŒ–æ¨¡å—ä¸­å°†å…¶ç§»é™¤ï¼Œè¿™æ ·ä¼šåœ¨å‰ä¼ é‡åŒ–æ¨¡å—æ—¶å¯¼è‡´å¼‚å¸¸è¡Œä¸ºã€‚ 
+- è¿™æ ·æµ®ç‚¹æ¨¡åž‹åº”å¯é€šè¿‡ jit è¿½è¸ªæµ‹è¯•ã€‚å°†æµ®ç‚¹æ¨¡å—è®¾ç½®ä¸ºè¯„ä¼°çŠ¶æ€ï¼Œç„¶åŽä½¿ç”¨ torch.jit.trace å‡½æ•°æ¥æµ‹è¯•æµ®ç‚¹æ¨¡åž‹ã€‚
+æˆ‘ä»¬ä½¿ç”¨çš„yolov5æ¨¡åž‹ï¼Œéœ€è¦å°†ç‰¹å¾æå–ä¸­å‰ä¼ å‡½æ•°ç­‰å¤šäºŽéƒ¨åˆ†åŽ»æŽ‰ï¼Œä¿®æ”¹åŽä»£ç å¦‚ä¸‹ï¼š
 ```
         z = []
         for i in range(nl):
@@ -29,55 +29,55 @@ Use Vitis-AI to deploy yolov5 on ZCU104
                     grid[i], anchor_grid[i] = _make_grid(anchors,stride,nx, ny, i)
 ```
 
-### 3£© vai_q_pytorch API Ìí¼ÓÖÁ¸¡µã½Å±¾
-- Èç¹ûÔÚÁ¿»¯Ç°£¬ÒÑÓÐ¾­¹ýÑµÁ·µÄ¸¡µãÄ£ÐÍºÍ Python ½Å±¾ÓÃÓÚ¶ÔÄ£ÐÍ¾«¶È/mAP ½øÐÐÇóÖµ£¬ÄÇÃ´Á¿»¯Æ÷ API »á½«¸¡µãÄ£¿éÌæ»»ÎªÁ¿»¯Ä£¿é¡£³£¹æÇóÖµº¯Êý¹ÄÀøÁ¿»¯Ä£¿éÇ°´«¡£Èç¹û quant_mode ±êÖ¾ÉèÎª¡°calib¡±£¬Á¿»¯Ð£×¼¿ÉÔÚÇóÖµ¹ý ³ÌÖÐÅÐ¶¨ÕÅÁ¿µÄÁ¿»¯²½Öè¡£Ð£×¼ºó£¬½« quant_mode ÉèÖÃÎª¡°test¡±ÒÔ¶ÔÁ¿»¯Ä£ÐÍ½øÐÐÇóÖµ¡£
- - µ¼Èë vai_q_pytorch Ä£¿é
+### 3ï¼‰ vai_q_pytorch API æ·»åŠ è‡³æµ®ç‚¹è„šæœ¬
+- å¦‚æžœåœ¨é‡åŒ–å‰ï¼Œå·²æœ‰ç»è¿‡è®­ç»ƒçš„æµ®ç‚¹æ¨¡åž‹å’Œ Python è„šæœ¬ç”¨äºŽå¯¹æ¨¡åž‹ç²¾åº¦/mAP è¿›è¡Œæ±‚å€¼ï¼Œé‚£ä¹ˆé‡åŒ–å™¨ API ä¼šå°†æµ®ç‚¹æ¨¡å—æ›¿æ¢ä¸ºé‡åŒ–æ¨¡å—ã€‚å¸¸è§„æ±‚å€¼å‡½æ•°é¼“åŠ±é‡åŒ–æ¨¡å—å‰ä¼ ã€‚å¦‚æžœ quant_mode æ ‡å¿—è®¾ä¸ºâ€œcalibâ€ï¼Œé‡åŒ–æ ¡å‡†å¯åœ¨æ±‚å€¼è¿‡ ç¨‹ä¸­åˆ¤å®šå¼ é‡çš„é‡åŒ–æ­¥éª¤ã€‚æ ¡å‡†åŽï¼Œå°† quant_mode è®¾ç½®ä¸ºâ€œtestâ€ä»¥å¯¹é‡åŒ–æ¨¡åž‹è¿›è¡Œæ±‚å€¼ã€‚
+ - å¯¼å…¥ vai_q_pytorch æ¨¡å—
  ```
     from pytorch_nndct.apis import torch_quantizer, dump_xmodel
  ```
 
- - ÒÔÐèÒªÊäÈëµÄÁ¿»¯Ä£ÐÍÀ´Éú³ÉÁ¿»¯Æ÷£¬²¢»ñÈ¡×ª»»ºóµÄÄ£ÐÍ¡£
+ - ä»¥éœ€è¦è¾“å…¥çš„é‡åŒ–æ¨¡åž‹æ¥ç”Ÿæˆé‡åŒ–å™¨ï¼Œå¹¶èŽ·å–è½¬æ¢åŽçš„æ¨¡åž‹ã€‚
  ```
    input = torch.randn([batch_size, 3, 224, 224])
    quantizer = torch_quantizer(quant_mode, model, (input))
    quant_model = quantizer.quant_model
  ```
 
- - Ê¹ÓÃ×ª»»ºóµÄÄ£ÐÍÇ°´«Éñ¾­ÍøÂç¡£
+ - ä½¿ç”¨è½¬æ¢åŽçš„æ¨¡åž‹å‰ä¼ ç¥žç»ç½‘ç»œã€‚
 
-### 4£©ÔËÐÐÁ¿»¯²¢»ñÈ¡½á¹û
-Ê×ÏÈÀ´¿´Ò»ÏÂÕûÌåµÄÎÄ¼þÄ¿Â¼½á¹¹¡£ÆäÖÐquantize.py¼´ÎªÁ¿»¯½Å±¾£¬Êý¾Ý¼¯ºÍlabel´æ·ÅÔÚdatasetsÖÐ£¬ÔËÐÐ½á¹û»áÉú³ÉÔÚrunsÄ¿Â¼ÏÂ¡£
-![!\[Alt text\](image.png)](<Run Exm/ÎÄ¼þ¼Ð²ã¼¶Ä¿Â¼.png>)
+### 4ï¼‰è¿è¡Œé‡åŒ–å¹¶èŽ·å–ç»“æžœ
+é¦–å…ˆæ¥çœ‹ä¸€ä¸‹æ•´ä½“çš„æ–‡ä»¶ç›®å½•ç»“æž„ã€‚å…¶ä¸­quantize.pyå³ä¸ºé‡åŒ–è„šæœ¬ï¼Œæ•°æ®é›†å’Œlabelå­˜æ”¾åœ¨datasetsä¸­ï¼Œè¿è¡Œç»“æžœä¼šç”Ÿæˆåœ¨runsç›®å½•ä¸‹ã€‚
+![!\[Alt text\](image.png)](<Run Exm/æ–‡ä»¶å¤¹å±‚çº§ç›®å½•.png>)
 
-- ÔËÐÐº¬¡°--quant_mode calib¡±µÄÃüÁîÒÔÁ¿»¯Ä£ÐÍ¡£
+- è¿è¡Œå«â€œ--quant_mode calibâ€çš„å‘½ä»¤ä»¥é‡åŒ–æ¨¡åž‹ã€‚
 ```
 python resnet18_quant.py --quant_mode calib --subset_len
 ```
 ![!\[Alt text\](image-1.png)](<Run Exm/calib.png>)
 
- - ´ËÊ±Á¿»¯¿ªÊ¼£¬²¢ÇÒ³É¹¦¼ÓÔØÊý¾Ý¼¯ºÍÄ£ÐÍ¡£²¢ÇÒÁ¿»¯ºó£¬¿ªÊ¼¶ÔÊý¾Ý¼¯ÖÐµÄÄ£ÐÍ½øÐÐÔ¤²â¡£
-![!\[Alt text\](image-2.png)](<Run Exm/calib_ÖÐ¼ä¹ý³Ì.png>)
+ - æ­¤æ—¶é‡åŒ–å¼€å§‹ï¼Œå¹¶ä¸”æˆåŠŸåŠ è½½æ•°æ®é›†å’Œæ¨¡åž‹ã€‚å¹¶ä¸”é‡åŒ–åŽï¼Œå¼€å§‹å¯¹æ•°æ®é›†ä¸­çš„æ¨¡åž‹è¿›è¡Œé¢„æµ‹ã€‚
+![!\[Alt text\](image-2.png)](<Run Exm/calib_ä¸­é—´è¿‡ç¨‹.png>)
 
- - ¿ÉÒÔ¿´µ½µÚÒ»²½calibÔËÐÐÍê³É£¬¿ÉÒÔÈ¥runsÎÄ¼þ¼ÐÖÐ²é¿´ÔËÐÐ½á¹û¡£
+ - å¯ä»¥çœ‹åˆ°ç¬¬ä¸€æ­¥calibè¿è¡Œå®Œæˆï¼Œå¯ä»¥åŽ»runsæ–‡ä»¶å¤¹ä¸­æŸ¥çœ‹è¿è¡Œç»“æžœã€‚
 ![!\[Alt text\](image-3.png)](<Run Exm/calib_final.png>)
 
- - Éú³ÉÁËÁ¿»¯ºóÄ£ÐÍ¶ÔÊý¾Ý¼¯µÄÔ¤²â£¬»¹ÓÐÁ¿»¯ºóÄ£ÐÍµÄ¸÷ÏîÖ¸±ê²ÎÊý£ºF1¡¢P¡¢R¡¢PR¡£
+ - ç”Ÿæˆäº†é‡åŒ–åŽæ¨¡åž‹å¯¹æ•°æ®é›†çš„é¢„æµ‹ï¼Œè¿˜æœ‰é‡åŒ–åŽæ¨¡åž‹çš„å„é¡¹æŒ‡æ ‡å‚æ•°ï¼šF1ã€Pã€Rã€PRã€‚
 
 
-- ÒªÉú³É xmodel ½øÐÐ±àÒë£¨ÒÔ¼° onnx ¸ñÊ½Á¿»¯Ä£ÐÍ£©£¬Åú´Î´óÐ¡Ó¦Îª 1¡£ÉèÖÃ subset_len=1 ¿É±ÜÃâÈßÓàµü´ú£¬²¢ÔËÐÐÒÔÏÂÃüÁî£º
+- è¦ç”Ÿæˆ xmodel è¿›è¡Œç¼–è¯‘ï¼ˆä»¥åŠ onnx æ ¼å¼é‡åŒ–æ¨¡åž‹ï¼‰ï¼Œæ‰¹æ¬¡å¤§å°åº”ä¸º 1ã€‚è®¾ç½® subset_len=1 å¯é¿å…å†—ä½™è¿­ä»£ï¼Œå¹¶è¿è¡Œä»¥ä¸‹å‘½ä»¤ï¼š
 ```
 python resnet18_quant.py --quant_mode test --subset_len 1 --batch_size=1 --deploy
 ```
 
 
- - Í¬Ñù£¬½á¹ûÒ²»áÉú³ÉÔÚrunsÎÄ¼þ¼ÐÏÂ¡£
+ - åŒæ ·ï¼Œç»“æžœä¹Ÿä¼šç”Ÿæˆåœ¨runsæ–‡ä»¶å¤¹ä¸‹ã€‚
 
 
 
-### 5£© Éú³É¿ÉÖ´ÐÐÎÄ¼þXmodel
-- ÔËÐÐÒÔÏÂÃüÁî¼´¿É£¬ÐèÒª×¢ÒâµÄÊÇÒªÑ¡Ôñ×Ô¼º°å¿¨Ëù¶ÔÓ¦µÄDPUÐÍºÅ¡£
+### 5ï¼‰ ç”Ÿæˆå¯æ‰§è¡Œæ–‡ä»¶Xmodel
+- è¿è¡Œä»¥ä¸‹å‘½ä»¤å³å¯ï¼Œéœ€è¦æ³¨æ„çš„æ˜¯è¦é€‰æ‹©è‡ªå·±æ¿å¡æ‰€å¯¹åº”çš„DPUåž‹å·ã€‚
 ```
 vai_c_xir -x ./quantize_result/DetectMultiBackend_int.xmodel -a /opt/vitis_ai/compiler/arch/DPUCZDX8G/ZCU104/arch.json -o ./ -n model
 ```
-µ½Éú³ÉÁËÎÒÃÇËùÐèÒªµÄXmodel¿ÉÖ´ÐÐÎÄ¼þ¡£
+åˆ°ç”Ÿæˆäº†æˆ‘ä»¬æ‰€éœ€è¦çš„Xmodelå¯æ‰§è¡Œæ–‡ä»¶ã€‚
 
