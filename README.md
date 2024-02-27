@@ -33,51 +33,51 @@ Use Vitis-AI to deploy yolov5 on ZCU104
 - 如果在量化前，已有经过训练的浮点模型和 Python 脚本用于对模型精度/mAP 进行求值，那么量化器 API 会将浮点模块替换为量化模块。常规求值函数鼓励量化模块前传。如果 quant_mode 标志设为“calib”，量化校准可在求值过 程中判定张量的量化步骤。校准后，将 quant_mode 设置为“test”以对量化模型进行求值。
  - 导入 vai_q_pytorch 模块
  ```
-    from?pytorch_nndct.apis?import?torch_quantizer,?dump_xmodel
+    from pytorch_nndct.apis import torch_quantizer, dump_xmodel
  ```
 
  - 以需要输入的量化模型来生成量化器，并获取转换后的模型。
  ```
-   input?=?torch.randn([batch_size,?3,?224,?224])
-   quantizer?=?torch_quantizer(quant_mode,?model,?(input))
-   quant_model?=?quantizer.quant_model
+   input = torch.randn([batch_size, 3, 224, 224])
+   quantizer = torch_quantizer(quant_mode, model, (input))
+   quant_model = quantizer.quant_model
  ```
 
  - 使用转换后的模型前传神经网络。
 
 ### 4）运行量化并获取结果
 首先来看一下整体的文件目录结构。其中quantize.py即为量化脚本，数据集和label存放在datasets中，运行结果会生成在runs目录下。
-![Alt text](image.png)
+![!\[Alt text\](image.png)](<Run Exm/文件夹层级目录.png>)
 
 - 运行含“--quant_mode calib”的命令以量化模型。
 ```
-python?resnet18_quant.py?--quant_mode?calib?--subset_len
+python resnet18_quant.py --quant_mode calib --subset_len
 ```
-![Alt text](image-1.png)
+![!\[Alt text\](image-1.png)](<Run Exm/calib.png>)
 
  - 此时量化开始，并且成功加载数据集和模型。并且量化后，开始对数据集中的模型进行预测。
-![Alt text](image-2.png)
+![!\[Alt text\](image-2.png)](<Run Exm/calib_中间过程.png>)
 
  - 可以看到第一步calib运行完成，可以去runs文件夹中查看运行结果。
-![Alt text](image-3.png)
+![!\[Alt text\](image-3.png)](<Run Exm/calib_final.png>)
 
- - 生成了量化后模型对数据集的预测，还有量化后模型的各项指标参数：F1、P、R、PR。下图为生成的F1参数曲线。
-![Alt text](image-4.png)
+ - 生成了量化后模型对数据集的预测，还有量化后模型的各项指标参数：F1、P、R、PR。
+
 
 - 要生成 xmodel 进行编译（以及 onnx 格式量化模型），批次大小应为 1。设置 subset_len=1 可避免冗余迭代，并运行以下命令：
 ```
-python?resnet18_quant.py?--quant_mode?test?--subset_len?1?--batch_size=1?--deploy
+python resnet18_quant.py --quant_mode test --subset_len 1 --batch_size=1 --deploy
 ```
-![Alt text](image-5.png)
 
- - 可以看到开始正确运行，下面是运行完成结果。同样，结果也会生成在runs文件夹下。
- ![Alt text](image-6.png)
+
+ - 同样，结果也会生成在runs文件夹下。
+
 
 
 ### 5） 生成可执行文件Xmodel
 - 运行以下命令即可，需要注意的是要选择自己板卡所对应的DPU型号。
 ```
-vai_c_xir?-x?./quantize_result/DetectMultiBackend_int.xmodel?-a?/opt/vitis_ai/compiler/arch/DPUCZDX8G/ZCU104/arch.json?-o?./?-n?model
+vai_c_xir -x ./quantize_result/DetectMultiBackend_int.xmodel -a /opt/vitis_ai/compiler/arch/DPUCZDX8G/ZCU104/arch.json -o ./ -n model
 ```
-运行结束，可以看到生成了我们所需要的Xmodel可执行文件。
-![Alt text](image-7.png)
+到生成了我们所需要的Xmodel可执行文件。
+
