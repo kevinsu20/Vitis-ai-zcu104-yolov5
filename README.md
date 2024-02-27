@@ -13,6 +13,13 @@ Use Vitis-AI to deploy yolov5 on ZCU104
 |model.py  |  Python script                   |
 |dataset   |  100 - 1000 images               |
 
+| name          | description                      |
+| ------------- | -------------------------------- |
+| model.pt      | pre-training model ,  PTH file   |
+| model.py      | Python script                    |
+| dataset       | 100 - 1000 images                |
+
+
 ### 2）modify model
 要使 PyTorch 模型可量化，需要修改模型定义，以确保修改后的模型满足以下条件:
 - 要量化的模型应仅含前传方法。所有其它函数都应移出或者迁移至派生的类。这些函数通常作为预处理和后处理来工作。如果不将其移出，那么此 API 会在量化模块中将其移除，这样会在前传量化模块时导致异常行为。 
