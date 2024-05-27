@@ -9,7 +9,7 @@ Use Vitis AI to deploy yolov5 on ZCU104
 | name          | description                      |
 | ------------- | -------------------------------- |
 | model.pt      | pre-training model ,  PTH file   |
-| model.py      | Python script                    |
+| quantize.py      | Python script                    |
 | dataset       | 100 - 1000 images                |
 
 
@@ -49,7 +49,7 @@ Use Vitis AI to deploy yolov5 on ZCU104
 
 - 运行含“--quant_mode calib”的命令以量化模型。
 ```
-python resnet18_quant.py --quant_mode calib --subset_len
+python quantize.py --quant_mode calib --subset_len
 ```
 ![!\[Alt text\](image-1.png)](<Run Exm/calib.png>)
 
@@ -64,12 +64,11 @@ python resnet18_quant.py --quant_mode calib --subset_len
 
 - 要生成 xmodel 进行编译（以及 onnx 格式量化模型），批次大小应为 1。设置 subset_len=1 可避免冗余迭代，并运行以下命令：
 ```
-python resnet18_quant.py --quant_mode test --subset_len 1 --batch_size=1 --deploy
+python quantize.py --quant_mode test --subset_len 1 --batch_size=1 --deploy
 ```
 
 
  - 同样，结果也会生成在runs文件夹下。
-
 
 
 ### 5） 生成可执行文件Xmodel
