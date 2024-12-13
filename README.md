@@ -1,7 +1,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Use Vitis AI to deploy yolov5 on ZCU104
+
 研一所做项目，还有许多功能待完善，但是研究生方向并不是AI，所以后续不会再对仓库进行更新。
+
 后续会更新Risc-V相关项目，有兴趣可以看其余repo。 :)
 
 ## 运行vai_q_pytorch
